@@ -1,0 +1,556 @@
+/* =========================
+   Global Styles
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #757575;
+    --danger-color: #F44336;
+    --success-color: #4CAF50;
+    --bg-color: #f5f5f5;
+    --card-bg: #ffffff;
+    --text-dark: #212121;
+    --text-light: #757575;
+    --border-color: #e0e0e0;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* =========================
+   Container & Layout
+   ========================= */
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--border-color);
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 2px solid var(--border-color);
+    margin-top: 30px;
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+/* =========================
+   Status Bar
+   ========================= */
+
+.status-bar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.status-badge.connected {
+    background-color: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.status-badge.disconnected {
+    background-color: var(--danger-color);
+    color: white;
+    border-color: var(--danger-color);
+}
+
+/* =========================
+   Sections
+   ========================= */
+
+.section {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.section h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+/* =========================
+   Upload Area
+   ========================= */
+
+.upload-area {
+    border: 3px dashed var(--primary-color);
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f0f7ff;
+}
+
+.upload-area:hover {
+    background-color: #e3f2fd;
+    border-color: #1976D2;
+}
+
+.upload-area.dragover {
+    background-color: #bbdefb;
+    border-color: #1565c0;
+}
+
+.upload-icon {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.upload-area p {
+    color: var(--text-light);
+    font-size: 1.1em;
+}
+
+/* =========================
+   Progress Bar
+   ========================= */
+
+.upload-progress {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+#progress-text {
+    min-width: 50px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1976D2;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #616161;
+    box-shadow: var(--shadow);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #E53935;
+    box-shadow: var(--shadow);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn.busy {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.btn.clicked {
+    transform: translateY(2px) scale(0.98);
+    filter: brightness(1.08);
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    z-index: 1000;
+    max-width: calc(100% - 32px);
+    transform: translate(-50%, 16px);
+    opacity: 0;
+    pointer-events: none;
+    background: #121212;
+    color: white;
+    border: 2px solid var(--success-color);
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.toast.error {
+    border-color: var(--danger-color);
+}
+
+/* =========================
+   Control Grid
+   ========================= */
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.control-grid .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+/* =========================
+   Settings Groups
+   ========================= */
+
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings-group label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.settings-group span:first-child {
+    min-width: 180px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.settings-group input[type="text"],
+.settings-group input[type="password"],
+.settings-group select {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.settings-group input[type="text"]:focus,
+.settings-group input[type="password"]:focus,
+.settings-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.settings-group input[type="range"] {
+    flex: 1;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.settings-group span:last-child {
+    min-width: 60px;
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* =========================
+   File List
+   ========================= */
+
+.file-list-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.file-list-controls .btn {
+    flex: 1;
+    min-width: 150px;
+}
+
+.file-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.file-item {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.file-item:last-child {
+    border-bottom: none;
+}
+
+.file-item:hover {
+    background-color: #f0f0f0;
+}
+
+.file-name {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.file-size {
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.file-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.85em;
+    min-width: auto;
+}
+
+.no-images {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-light);
+}
+
+/* =========================
+   Info Section
+   ========================= */
+
+.info-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.info-item .label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.info-item .value {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* =========================
+   Responsive Design
+   ========================= */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .section {
+        padding: 15px;
+    }
+
+    .upload-area {
+        padding: 30px 15px;
+    }
+
+    .upload-icon {
+        font-size: 2em;
+    }
+
+    .settings-group label {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .settings-group span:first-child {
+        min-width: auto;
+    }
+
+    .settings-group input[type="text"],
+    .settings-group input[type="password"],
+    .settings-group select,
+    .settings-group input[type="range"] {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .settings-group span:last-child {
+        min-width: auto;
+        text-align: left;
+    }
+
+    .control-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .file-list-controls {
+        flex-direction: column;
+    }
+
+    .file-list-controls .btn {
+        min-width: auto;
+    }
+
+    .status-bar {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --card-bg: #1e1e1e;
+        --text-dark: #e0e0e0;
+        --text-light: #b0b0b0;
+        --border-color: #333333;
+    }
+
+    .upload-area {
+        background-color: #1a1a2e;
+    }
+
+    .upload-area:hover {
+        background-color: #16213e;
+    }
+
+    .file-list {
+        background-color: #161616;
+    }
+
+    .file-item:hover {
+        background-color: #2a2a2a;
+    }
+
+    .info-section {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    .info-item {
+        background-color: rgba(30, 30, 30, 0.9);
+    }
+}
